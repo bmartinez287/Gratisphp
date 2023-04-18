@@ -5,6 +5,7 @@ $router->get('/about', 'about.php');
 $router->get('/contact', 'contact.php');
 
 $router->get('/cars', 'cars/index.php');
+$router->get('/car', 'cars/show.php');
 
 $router->get('/notes', 'notes/index.php')->only('auth');
 $router->get('/note', 'notes/show.php');
