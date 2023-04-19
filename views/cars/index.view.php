@@ -4,7 +4,10 @@
 
 <main>
   <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-  <div class="grid grid-cols-4 gap-4">
+  <?php foreach ($_SESSION['car'] as $car) : ?>
+      <h1>The last car seen was <?= $car ?> </h1>
+  <?php endforeach; ?>
+    <div class="grid grid-cols-4 gap-4">
       <?php foreach ($cars as $car) : ?>
         <a href="/car?id=<?= $car['id'] ?>">
           <div class="max-w-sm rounded overflow-hidden shadow-lg">
