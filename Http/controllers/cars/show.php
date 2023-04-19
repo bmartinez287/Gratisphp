@@ -11,13 +11,18 @@ $car = $db->query('select * from cars where id = :id', [
     'id' => $_GET['id']
 ])->findOrFail();
 
-// authorize($note['user_id'] === $currentUserId);
-if (!in_array($car['id'], $_SESSION['car']))
-{
-    array_push($_SESSION['car'],$car['id'] );
-    // $_SESSION['car']['id']= $car['id']; 
-}
 
+// authorize($note['user_id'] === $currentUserId);
+if (!isset($_SESSION['car'])) {
+    $_SESSION['car'] = [
+        'id' => $car['id']
+    ];
+} else {
+    if (!in_array($car['id'], $_SESSION['car'])) {
+        array_push($_SESSION['car'], $car['id']);
+        // $_SESSION['car']['id']= $car['id']; 
+    }
+}
 dd(sizeof($_SESSION['car']));
 // $_SESSION['car'] = [
 //     'id' => $car['id']
