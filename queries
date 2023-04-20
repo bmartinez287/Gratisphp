@@ -1,1 +1,0 @@
-INSERT INTO `db`.`cars` (`id`, `name`, `price`, `milage`, `description`, `video`, `features`, `vin`) VALUES (1, '2022 Chevrolet Silverado 1500', 55,900.00, 60000, 'asda', 'asdasd', 'asdasd', '1GCUDDED0NZ617281');
