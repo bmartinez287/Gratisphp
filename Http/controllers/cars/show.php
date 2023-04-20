@@ -5,14 +5,11 @@ use Core\Database;
 
 $db = App::resolve(Database::class);
 
-// $currentUserId = 1;
 
 $car = $db->query('select * from cars where id = :id', [
     'id' => $_GET['id']
 ])->findOrFail();
 
-
-// authorize($note['user_id'] === $currentUserId);
 if (!isset($_SESSION['car'])) {
     $_SESSION['car'] = [
         'id' => $car['id']
