@@ -4,26 +4,22 @@
 
 <main>
   <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-  <?php if ($_SESSION['car'] ?? false) : ?>
-  <?php foreach ($_SESSION['car'] as $car) : ?>
-      <h1>The last car seen was <?= $car ?> </h1>
-  <?php endforeach; ?>
-  <?php endif ?> 
+    <h2 class="text-2xl mb-8 font-bold tracking-tight text-gray-90">Recently viewed Cars</h2>
     <div class="grid grid-cols-4 gap-4">
       <?php foreach ($cars as $car) : ?>
         <a href="/car?id=<?= $car['id'] ?>">
           <div class="max-w-sm rounded overflow-hidden shadow-lg">
-            <img class="w-full" src="https://vehicle-photos-published.vauto.com/e6/0f/1d/b4-e40e-445f-8e91-cd06c686a183/image-1.jpg" alt="Sunset in the mountains">
+            <img class="w-full" src="<?=$car['image']?>" alt="Sunset in the mountains">
             <div class="px-6 py-4">
               <div class="font-bold text-xl mb-2"> <?= htmlspecialchars($car['name']) ?></div>
               <p class="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+              <?=$car['description']?>
               </p>
             </div>
             <div class="px-6 pt-4 pb-2">
-              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Price: $<?=$car['price']?></span>
+              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Miles: <?=$car['milage']?></span>
+              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Vin: <?=$car['vin']?></span>
             </div>
           </div>
         </a>

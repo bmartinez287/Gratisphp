@@ -5,7 +5,7 @@ use Core\Database;
 
 $db = App::resolve(Database::class);
 
-$currentUserId = 1;
+// $currentUserId = 1;
 
 $car = $db->query('select * from cars where id = :id', [
     'id' => $_GET['id']
@@ -20,13 +20,8 @@ if (!isset($_SESSION['car'])) {
 } else {
     if (!in_array($car['id'], $_SESSION['car'])) {
         array_push($_SESSION['car'], $car['id']);
-        // $_SESSION['car']['id']= $car['id']; 
     }
 }
-dd(sizeof($_SESSION['car']));
-// $_SESSION['car'] = [
-//     'id' => $car['id']
-// ];
 
 view("cars/show.view.php", [
     'heading' => 'Car',

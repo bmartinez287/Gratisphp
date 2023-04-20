@@ -8,10 +8,15 @@ $db = App::resolve(Database::class);
 // $cars = $db->query('select * from cars')->get();
 // $arr = [1,2,3]; $_SESSION(car)
 // dd(array_values($_SESSION['car']));
+if (!isset($_SESSION['car'])) {
+ $cars = [];
+}
+else{
 $arr = array_values($_SESSION['car']);
 $in  = str_repeat('?,', count($arr) - 1) . '?';
 $sql = "SELECT * FROM table WHERE column IN ($in)";
 $cars = $db->query("select * from cars where id IN ($in)", $arr)->get();
+}
 
 view("dashboard/index.view.php", [
     'heading' => 'Dashboard',
